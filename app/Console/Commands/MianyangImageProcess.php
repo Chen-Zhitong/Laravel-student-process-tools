@@ -6,25 +6,25 @@ use Illuminate\Console\Command;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\Storage;
 
-class LuzhouImageProcess extends Command
+class MianyangImageProcess extends Command
 {
-    private $b_file = '/home/sikoay/Desktop/泸州育婴师/moban.jpg';
-    private $p_dir = '/home/sikoay/Desktop/泸州育婴师/泸州相片/';
-    private $ttf = '/home/sikoay/Desktop/龙泉育婴师/Deng.ttf';
+    private $b_file = '/home/sikoay/Desktop/绵阳幼专高级育婴师照片/moban.jpg';
+    private $p_dir = '/home/sikoay/Desktop/绵阳幼专高级育婴师照片/育婴师电子照片/';
+    private $ttf = '/home/sikoay/font/Deng.ttf';
 
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'LuzhouImageProcess:action';
+    protected $signature = 'MianyangImageProcess:action';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = '处理泸州照片,一次性操作';
+    protected $description = '处理绵阳照片,一次性操作';
 
     /**
      * Create a new command instance.
@@ -70,9 +70,9 @@ class LuzhouImageProcess extends Command
 
             $b = Image::make($this->b_file);
             $photo = Image::make($this->photoPath($file_name));
-            $photo -> resize(351,470);
+            $photo -> resize(280,390);
             // dd($photo->filename);
-            $b->insert($photo,'top-left',1480,642);
+            $b->insert($photo,'top-left',1700,1280);
             $b->text($photo->filename,100,100,function($font) {
                 $font->file($this->ttf);
                 $font->size(30);
