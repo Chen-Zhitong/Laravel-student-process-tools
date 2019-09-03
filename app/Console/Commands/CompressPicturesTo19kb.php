@@ -58,8 +58,10 @@ class CompressPicturesTo19kb extends Command
         foreach($files as $file_name){
             $i++;
             $photo = Image::make($in_dir.$file_name);
-            $photo -> resize(165,240);
-            $photo->save($out_dir.$file_name);
+            $jpg=$photo -> encode('jpg',100);
+            $jpg -> resize(200,290);
+            // $photo->save($out_dir.$file_name);
+            $jpg->save($out_dir.$jpg->filename.'.jpg');
 
             $this->line('('.$i.'/'.count($files).')'.$file_name.'处理完成');
         }
